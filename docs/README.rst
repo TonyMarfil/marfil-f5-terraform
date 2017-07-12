@@ -33,13 +33,31 @@ Task 1 - Prepare the F5-Super-Netops container and create you AWS lab account
 
    docker run -p 8080:80 -p 2222:22 -it -e decryptPassword=[Decryption Password] f5devcentral/f5-super-netops-container:base
 
-If the Decryption Password is SuperSecretPass then the command would be:
+For example, if the Decryption Password is "SuperSecretPass" then the command would be:
 
 .. code-block:: bash
 
    docker run -p 8080:80 -p 2222:22 -it -e decryptPassword=SuperSecretPass f5devcentral/f5-super-netops-container:base
 
-2. Wait until the f5-super-netops has finished launching. From the container's Bash shell, clone the git repository for this lab, change to the working directory, and run the f5-super-netops-install.sh script.
+2. Wait until the f5-super-netops has finished launching. 
+   All following steps will be done within the SuperNetops Docker Container.
+   There are two ways to access the Supernetops Docker Container:
+    1. Use the already existing Bash shell
+    2. SSH into the Docker Container: 
+    
+.. code-block:: bash
+
+      ssh -p 2222 snops@localhost   
+you will be promted for a password. The password is: "default"
+After you loged in to the docker container via SSH, change the  user to root: Use:
+      
+.. code-block:: bash
+
+      su -
+
+password is "default"
+      
+3.  Clone the git repository for this lab, change to the working directory (marfil-f5-terraform), and run the f5-super-netops-install.sh script.
 
 .. code-block:: bash
 
@@ -47,9 +65,11 @@ If the Decryption Password is SuperSecretPass then the command would be:
    cd ./marfil-f5-terraform/
    source ./scripts/f5-super-netops-install.sh
 
-3. When prompted, enter an email address and aws console password. The email address is used to create an aws console login and to tag all of your lab components.
+4. The Script will create new AWS console login with password. 
+   When prompted, enter an email address of your choice that will be used as AWS console login and a new AWS console password. 
+   The email address will also tag all of your lab components.
 
-4. Invoke terraform.
+5. Invoke terraform.
 
 .. attention:: If Big-IQ License Manager has been configured previously, use the provided address. Otherwise cut and paste from below.
 
