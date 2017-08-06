@@ -87,8 +87,7 @@ touch $emailid.emailid
 
 envsubst < ./scripts/config.template > ~/.aws/config
 
-aws s3 mb s3://${TF_VAR_emailidsan}-terraform-bucket
-terraform init -backend-config bucket=${TF_VAR_emailidsan}-terraform-bucket -backend-config region=${AWS_DEFAULT_REGION}
+terraform init -backend-config bucket=f5-public-cloud-terraform-${AWS_DEFAULT_REGION} -backend-config key=${TF_VAR_emailidsan}.terraform.tfstate -backend-config region=${AWS_DEFAULT_REGION}
 
 fi
 done
