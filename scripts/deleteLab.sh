@@ -27,7 +27,7 @@ touch ${TF_VAR_emailidsan}.key
 rm -rf .terraform
 
 # initialize s3
-terraform init -backend-config bucket=${TF_VAR_emailidsan}-terraform-bucket -backend-config region=${AWS_DEFAULT_REGION}
+terraform init -backend-config bucket=f5-public-cloud-${AWS_DEFAULT_REGION} -backend-config key=${TF_VAR_emailidsan}.terraform.tfstate -backend-config region=${AWS_DEFAULT_REGION}
 
 # delete keys
 scripts/lab-cleanup
