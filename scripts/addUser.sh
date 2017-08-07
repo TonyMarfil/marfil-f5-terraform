@@ -87,7 +87,14 @@ touch $emailid.emailid
 
 envsubst < ./scripts/config.template > ~/.aws/config
 
-terraform init -backend-config bucket=f5-public-cloud-terraform-${AWS_DEFAULT_REGION} -backend-config key=${TF_VAR_emailidsan}.terraform.tfstate -backend-config region=${AWS_DEFAULT_REGION}
+if [ $F5_ENV == "development" ]
+  then
+  terraform init -backend-config bucket=f5-public-cloud-development-terraform-${AWS_DEFAULT_REGION} -backend-config key=${TF_VAR_emailidsan}.terraform.tfstate -backend-config region=${AWS_DEFAULT_REGION}
+  else
+  terraform init -backend-config bucket=f5-public-cloud-terraform-${AWS_DEFAULT_REGION} -backend-config key=${TF_VAR_emailidsan}.terraform.tfstate -backend-config region=${AWS_DEFAULT_REGION}
+fi
+
+
 
 fi
 done
