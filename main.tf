@@ -1,10 +1,7 @@
 terraform {
   required_version = ">=0.9.6",
-  backend "s3" {
-    key    = "terraform.tfstate"
-  }
+  backend "s3" {}
 }
-
 provider "aws" {
   region = "${var.aws_region}"
 }
