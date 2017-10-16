@@ -45,7 +45,7 @@ if [ ! -f ~/.aws/credentials ]; then
     then
     cd ~/.aws/ && { wget -O config https://ehmgcx0mn3.execute-api.us-east-1.amazonaws.com/dev/${shortUrl} ; cd -; }
     else
-    cd ~/.aws/ && { wget -O config https://shuo18cqe6.execute-apazonaws.com/p/${shortUrl} ; cd -; }
+    cd ~/.aws/ && { wget -O config https://shuo18cqe6.execute-api.us-east-1.amazonaws.com/p/${shortUrl} ; cd -; }
   fi
 
   grep secret ~/.aws/* &> /dev/null
